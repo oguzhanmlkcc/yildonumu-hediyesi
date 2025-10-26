@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sana Özel Bir Sürprizim Var</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css"> 
+</head>
+<body class="aksam">
+    
+    <div id="takvim-sayaci" class="gizli">
+        <div class="takvim-spiral"></div>
+        <div class="takvim-yapragi">
+            <span id="takvim-gun">0</span>
+            <div class="takvim-metin">Gündür Birlikteyiz <br> Sevgilim</div>
+        </div>
+    </div>
+    
+    <div class="container">
+
+        <div id="gala-ekrani" class="ekran gizli">
+            <p id="gala-mesaji">Bugünden sonra hediyenin nasıl bir şey olduğunu yavaş yavaş anlayacaksın fakat şunu unutma; her gün istisnasız, seni çok sevdiğimi duyacaksın.</p>
+        </div>
+
+        <div id="karsilama-ekrani" class="ekran">
+            
+            <h1 id="zaman-selamlamasi">İyi Geceler Sevgilim</h1> 
+            <h2>Bugün Nasıl Hissediyorsun?</h2>
+            
+            <div class="mood-buttons">
+                <button data-mood="mutlu" class="mutlu-btn">
+                    <span>Mutlu</span>
+                </button>
+                <button data-mood="mutsuz" class="mutsuz-btn">
+                    <span>Mutsuz</span>
+                </button>
+                <button data-mood="stresli" class="stresli-btn">
+                    <span>Stresli</span>
+                </button>
+                <button data-mood="kizgin" class="kizgin-btn">
+                    <span>Kızgın</span>
+                </button>
+            </div>
+            
+            <div class="nav-buttons">
+                <button id="not-ekle-btn" class="nav-btn">Bugün İçin Bir Not Ekle 📝</button>
+                <button id="notlari-goster-btn" class="nav-btn">Eski Notlarım 📖</button>
+            </div>
+        </div>
+
+
+        <div id="mesaj-ekrani" class="ekran gizli">
+            <div class="media-container">
+                <img id="mesaj-gorseli" src="" alt="Sana özel bir anı">
+                <video id="mesaj-videosu" controls></video>
+                <audio id="mesaj-sesi" controls></audio>
+            </div>
+            <p id="mesaj-metni">Mesajın buraya gelecek...</p>
+        </div>
+        
+        <div id="kalp-yagmuru-container"></div>
+    
+        <div id="not-ekle-ekrani" class="ekran gizli">
+            <h1>Günün Notu</h1>
+            <h2>Bugün aklından neler geçiyor?</h2>
+            <textarea id="not-textarea" rows="8" placeholder="Buraya yaz..."></textarea>
+            <div class="nav-buttons">
+                <button id="not-kaydet-btn" class="nav-btn">Kaydet</button>
+                <button class="geri-don-btn nav-btn">Geri Dön</button>
+            </div>
+        </div>
+
+        <div id="notlarim-ekrani" class="ekran gizli">
+            <h1>Geçmiş Notlarım</h1>
+            <div id="not-listesi-container">
+                </div>
+            <div class="nav-buttons">
+                <button class="geri-don-btn nav-btn">Geri Dön</button>
+            </div>
+        </div>
+
+    </div> <script src="script.js"></script>
+    
+</body>
+</html>
