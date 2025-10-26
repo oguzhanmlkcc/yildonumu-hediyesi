@@ -1,0 +1,326 @@
+/* --- TEMEL AYARLAR VE SIFIRLAMA --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    transition: background-image 1s ease-in-out;
+}
+
+/* --- GÜNÜN SAATİNE GÖRE ARKA PLANLAR --- */
+body.sabah {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://images.unsplash.com/photo-1519120126480-8b5f5b74a3b7');
+}
+body.oglen {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1500964757637-c85e8a162699');
+}
+body.aksam {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1488866022504-f2584929ca5f');
+}
+body.gece {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1532767153582-b1a0e5145009');
+}
+
+/* --- ANA KUTU (CONTAINER) --- */
+.container {
+    width: 100%;
+    max-width: 550px;
+    background-color: transparent;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 40px;
+    border-radius: 25px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+    animation: fadeIn 0.8s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- EKRANLAR --- */
+.ekran { text-align: center; }
+.gizli { display: none; }
+
+/* --- BAŞLIKLAR VE YAZILAR --- */
+h1 {
+    font-family: 'Caveat', cursive;
+    font-size: 3.5em;
+    color: #f0e68c;
+    margin-bottom: 5px;
+}
+h2 {
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 40px;
+}
+
+
+/* --- BUTONLAR --- */
+.mood-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+}
+
+.mood-buttons button {
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 30px;
+    padding: 12px 24px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* --- DUYGU RENKLERİ --- */
+.mutlu-btn:hover { background-color: #FFC300; border-color: #FFC300; box-shadow: 0 0 15px #FFC300; }
+.mutsuz-btn:hover { background-color: #3498DB; border-color: #3498DB; box-shadow: 0 0 15px #3498DB; }
+.stresli-btn:hover { background-color: #2ECC71; border-color: #2ECC71; box-shadow: 0 0 15px #2ECC71; }
+.kizgin-btn:hover { background-color: #C70039; border-color: #C70039; box-shadow: 0 0 15px #C70039; }
+.korkulu-btn:hover { background-color: #9B59B6; border-color: #9B59B6; box-shadow: 0 0 15px #9B59B6; }
+.endiseli-btn:hover { background-color: #E67E22; border-color: #E67E22; box-shadow: 0 0 15px #E67E22; }
+
+
+/* --- HAREKETLİ ARKA PLAN ANİMASYONU --- */
+
+/* Arka plan resimlerimizin olduğu body'lere yeni bir animasyon ekliyoruz */
+body.aksam, body.gece {
+    animation: animateBackground 20s linear infinite;
+}
+
+/* Animasyonun senaryosu: Arka plan resmini yavaşça yukarı kaydırır */
+@keyframes animateBackground {
+    from { background-position: 0 0; }
+    to { background-position: 0 -200px; }
+}
+
+/* Kayan yıldızları/parıltıları oluşturuyoruz */
+.container {
+    position: relative; /* İçine ekleyeceğimiz yıldızların buna göre konumlanması için */
+    overflow: hidden; /* Dışarı taşan yıldızları gizler */
+}
+
+@keyframes move-twink-back {
+    from {background-position:0 0;}
+    to {background-position:-10000px 5000px;}
+}
+
+.stars, .twinkling {
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    width:100%;
+    height:100%;
+    display:block;
+}
+
+.stars {
+    background:#000 url(https://www.script-tutorials.com/demos/360/images/stars.png) repeat top center;
+    z-index:-2;
+}
+
+.twinkling{
+    background:transparent url(https://www.script-tutorials.com/demos/360/images/twinkling.png) repeat top center;
+    z-index:-1;
+    animation:move-twink-back 200s linear infinite;
+}
+/* --- ANA EKRAN GÜNCELLEMESİ (BÜYÜTME VE CANLI BUTONLAR) --- */
+
+/* Ana kutuyu daha geniş yapıyoruz */
+.container {
+    max-width: 700px; /* Genişliği 550px'den 700px'e çıkardık */
+}
+
+/* --- VİZYON 3.0: GERÇEK FOTOĞRAF BUTON STİLLERİ --- */
+
+/* Butonları saran kutunun aralığını biraz açalım */
+.mood-buttons {
+    gap: 20px;
+}
+
+/* Butonun KENDİSİ! */
+.mood-buttons button {
+    height: 180px; /* Daha da büyüttük */
+    width: 180px;  /* Daha da büyüttük */
+    border: none; /* ÇERÇEVELERİ TAMAMEN KALDIRDIK! */
+    border-radius: 25px; /* Kenarları şık bir şekilde yuvarlaklaştırdık */
+    
+    background-size: cover;
+    background-position: center;
+    
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+/* Fare üzerine gelinceki efekt */
+.mood-buttons button:hover {
+    transform: scale(1.08); /* Daha cesur bir büyüme efekti */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7); /* Daha belirgin bir gölge */
+}
+
+/* Butonların içindeki YAZILARIN olduğu kutu */
+/* Butonların içindeki YAZILARIN yeni, minimalist stili */
+.mood-buttons button span {
+    font-family: 'Playfair Display', serif; /* YENİ, KLAS FONTUMUZ! */
+    font-size: 2.2em; /* Boyutu biraz daha ayarladık */
+    font-weight: 700;
+    color: white;
+    
+    /* İŞTE YENİ SİHRİMİZ: GÜÇLÜ GÖLGE ZIRHI! Arka plan dolgusunu kaldırdık. */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8), 0 0 10px rgba(0, 0, 0, 0.6);
+    
+    z-index: 2;
+    margin-bottom: 10px;
+}
+
+
+/* --- Her Butona Kendi Fotoğrafını Atama --- */
+/* Buradaki URL'leri kendi "gorseller/ikonlar/" klasöründeki resimlerinle değiştirmeyi unutma! */
+
+.mutlu-btn {
+    background-image: url('gorseller/mutlu-animasyon.png');
+}
+
+.mutsuz-btn {
+    background-image: url('gorseller/uzgun-animasyon.png');
+}
+
+.stresli-btn {
+    background-image: url('gorseller/stresli-animasyon.png');
+}
+
+.kizgin-btn {
+    background-image: url('gorseller/kizgin-animasyon.png');
+}
+/* --- TAKVİM YAPRAĞI --- */
+#takvim-sayaci {
+    position: fixed; top: 20px; right: 20px; z-index: 50;
+    width: 120px; perspective: 1000px; opacity: 0; /* Başta gizli */
+}
+#takvim-sayaci.aktif { opacity: 1; }
+#takvim-sayaci.animasyon-baslat .takvim-yapragi { animation: sayfa-kapan 1.5s cubic-bezier(0.68, -0.55, 0.27, 1.55) 0.5s forwards; } /* Animasyona gecikme ekledik */
+.takvim-spiral { height: 15px; background: linear-gradient(90deg, #555, #333, #555); border-top-left-radius: 5px; border-top-right-radius: 5px; }
+.takvim-yapragi { background: #f4f4f4; color: #333; padding: 15px; border-radius: 5px; box-shadow: 0 5px 15px rgba(0,0,0,0.3); transform-origin: top center; transform: rotateX(-100deg); }
+#takvim-gun { font-size: 3em; font-weight: 700; color: #c70039; line-height: 1; }
+.takvim-metin { font-weight: 700; }
+@keyframes sayfa-kapan { 0% { transform: rotateX(-100deg); } 100% { transform: rotateX(0deg); } }
+
+/* --- NEFES ALAN BUTON ANİMASYONLARI --- */
+@keyframes yavas-zoom { 0%, 100% { background-size: 100% auto; } 50% { background-size: 110% auto; } }
+.mutlu-btn { animation: yavas-zoom 8s infinite ease-in-out; }
+
+/* --- ETKİLEŞİMLİ MESAJLAR --- */
+#mesaj-gorseli { cursor: pointer; } /* Resme tıklanabilir olduğunu göster */
+.sihirli-kelime { cursor: pointer; color: #f0e68c; text-shadow: 0 0 5px #f0e68c; }
+#kalp-yagmuru-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 999; pointer-events: none; }
+.kalp { position: absolute; font-size: 2em; animation: ucan-kalp 3s ease-out forwards; }
+@keyframes ucan-kalp { 0% { transform: translateY(0) scale(1); opacity: 1; } 100% { transform: translateY(-100vh) scale(0.5); opacity: 0; } }
+/* =================================== */
+/* =================================== */
+/* --- YENİ EKLENTİ: NOT SİSTEMİ --- */
+
+/* Karşılama Ekranındaki Yönlendirme Butonları */
+.nav-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 30px;
+    flex-wrap: wrap;
+}
+
+.nav-btn {
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    padding: 12px 20px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    background-color: rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.nav-btn:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+}
+
+/* Not Ekleme Ekranı */
+#not-textarea {
+    width: 100%;
+    padding: 15px;
+    border-radius: 10px;
+    border: none;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    background-color: rgba(255, 255, 255, 0.9);
+    color: #333;
+    resize: vertical;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+#not-textarea:focus {
+    outline: 2px solid #f0e68c;
+}
+
+/* Not Görüntüleme Ekranı */
+#not-listesi-container {
+    max-height: 40vh;
+    overflow-y: auto;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    padding: 20px;
+    text-align: left;
+}
+
+.not-item {
+    background-color: rgba(255, 255, 255, 0.9);
+    color: #333;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+.not-item:last-child {
+    margin-bottom: 0;
+}
+.not-tarih {
+    font-weight: 700;
+    color: #c70039;
+    font-size: 1.1em;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 5px;
+    margin-bottom: 8px;
+}
+.not-icerik {
+    font-size: 1em;
+    line-height: 1.6;
+    /* Satır sonlarını korumak için: */
+    white-space: pre-wrap; 
+}
